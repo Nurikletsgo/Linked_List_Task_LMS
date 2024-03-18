@@ -15,12 +15,8 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-/** Main де кайсыл иш аракетти аткаргыбыз келсе ошол метод switch case аркылуу чакырылып иштесин.
-
- Бардык маалыматтар туура жана так болуп консольго чыксын.*/
         MovieFindableServiceImpl movieFindableService = new MovieFindableServiceImpl();
         MovieSortableServiceImpl movieSortableService = new MovieSortableServiceImpl();
-
 
         List<Actor> actors1 = Arrays.asList(
                 new Actor("Тим Роббинс ", "Энди Дюфрейна"),
@@ -28,7 +24,9 @@ public class Main {
                 new Actor("Боб Гантон ", "Сэмюэла Нортона"),
                 new Actor("Уильям Сэдлер ", "Хейвуда"),
                 new Actor("Клэнси Браун ", "капитана Байрона Хэдли"));
+
         Producer producer1 = new Producer("Лайнс", "Гудман");
+
         Movie movie1 = new Movie("Побег из Шоушенка", LocalDate.of(1994, 3, 12), Genre.DRAMA, producer1, actors1);
         DataBase.movies.add(movie1);
 
@@ -107,6 +105,7 @@ public class Main {
                         System.out.println("write movie foundation year - mont - day");
                         LocalDate localDate = LocalDate.of(new Scanner(System.in).nextInt(),new Scanner(System.in).nextInt(),new Scanner(System.in).nextInt());
                         System.out.println(movieFindableService.findMovieByYear(localDate));
+
                         break;
                     case 5:
                         System.out.println("write producer name ");

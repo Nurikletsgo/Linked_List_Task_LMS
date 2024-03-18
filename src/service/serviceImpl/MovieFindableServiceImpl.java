@@ -22,6 +22,7 @@ public class MovieFindableServiceImpl implements MovieFindableService {
                 return movie;
             }
         }
+        System.err.println(" write correctly");
         return null;
     }
 
@@ -34,6 +35,7 @@ public class MovieFindableServiceImpl implements MovieFindableService {
                 }
             }
         }
+        System.err.println("not found");
         return null;
     }
 
@@ -44,6 +46,7 @@ public class MovieFindableServiceImpl implements MovieFindableService {
                 return  movie;
             }
         }
+        System.err.println(" not found");
         return null;
     }
 
@@ -54,6 +57,7 @@ public class MovieFindableServiceImpl implements MovieFindableService {
                 return movie;
             }
         }
+        System.err.println(" not found");
         return null;
     }
 
@@ -64,6 +68,7 @@ public class MovieFindableServiceImpl implements MovieFindableService {
                 return  movie;
             }
         }
+        System.err.println(" not found");
             return null;
     }
 
@@ -76,6 +81,7 @@ public class MovieFindableServiceImpl implements MovieFindableService {
                 }
             }
         }
+        System.err.println(" not found");
         return null;
     }
 }

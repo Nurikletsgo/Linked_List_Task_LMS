@@ -5,7 +5,8 @@ import model.Movie;
 import model.Producer;
 import service.MovieSortableService;
 
-import java.util.Comparator;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class MovieSortableServiceImpl implements MovieSortableService {
     @Override
@@ -26,12 +27,10 @@ public class MovieSortableServiceImpl implements MovieSortableService {
     @Override
     public void sortByYear(String ascOrDesc) {
         if (ascOrDesc.equalsIgnoreCase("Ascending")) {
-            Comparator<Movie> movieComparator = Comparator.comparing(Movie::getYear);
-            DataBase.movies.sort(movieComparator);
+            DataBase.movies.sort(Comparator.comparing(Movie::getYear));
             System.out.println(DataBase.movies);
         } else if (ascOrDesc.equalsIgnoreCase("Descending")) {
-            Comparator<Movie> movieComparator = Comparator.comparing(Movie::getYear).reversed();
-            DataBase.movies.sort(movieComparator);
+            DataBase.movies.sort(Comparator.comparing(Movie::getYear).reversed());
             System.out.println(DataBase.movies);
         } else {
             System.err.println(" write again");
@@ -40,18 +39,13 @@ public class MovieSortableServiceImpl implements MovieSortableService {
 
     @Override
     public void sortByProducer(String nameOrLastName) {
-        for (Movie movie : DataBase.movies) {
-            if (nameOrLastName.equalsIgnoreCase("Name") ) {
-                Comparator<Movie> movieComparator = Comparator.comparing(Movie::getName);
-               DataBase.movies.sort(movieComparator);
-                System.out.println(movie.getProducer());
-            }else if (nameOrLastName.equalsIgnoreCase("last name")){
-                Comparator<Movie>movieComparator = Comparator.comparing(Movie::getName);
-                DataBase.movies.sort(movieComparator);
-                System.out.println(movie.getProducer());
-                }
-            }
+        if (nameOrLastName.equalsIgnoreCase("name")){
+            DataBase.movies.sort(Comparator.comparing(movie -> movie.getProducer().getFirstName()));
+            System.out.println(DataBase.movies);
+        } else if (nameOrLastName.equalsIgnoreCase("last name")) {
+            DataBase.movies.sort(Comparator.comparing(movie -> movie.getProducer().getLastName()));
+            System.out.println(DataBase.movies);
+        }
+
         }
     }
-
-
